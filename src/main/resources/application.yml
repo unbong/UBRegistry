@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: ubregistry
+server:
+  port: 8484
+
+logging:
+  level:
+    io.unbong: debug

@@ -1,0 +1,31 @@
+### get all
+GET localhost:8484/findAll?service=unbong
+
+### 注册服务
+POST localhost:8484/reg?service=unbong
+Content-Type: application/json
+
+{
+  "context": "http",
+  "host": "127.0.0.1",
+  "port": "8802",
+  "schema": "http",
+  "status": false,
+
+  "parameters": {"env": "dev"}
+}
+
+### 取消注册
+POST localhost:8484/unreg?service=unbong
+Content-Type: application/json
+
+{
+  "context": "",
+  "host": "127.0.0.1",
+  "port": "8801",
+  "schema": "http",
+  "status": false,
+
+  "parameters": {"env": "dev"}
+}
+
