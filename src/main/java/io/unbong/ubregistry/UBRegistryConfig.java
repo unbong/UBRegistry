@@ -1,5 +1,6 @@
 package io.unbong.ubregistry;
 
+import io.unbong.ubregistry.cluster.Cluster;
 import io.unbong.ubregistry.helth.HealthChecker;
 import io.unbong.ubregistry.helth.UBHealthChecker;
 import io.unbong.ubregistry.service.RegistryService;
@@ -26,5 +27,11 @@ public class UBRegistryConfig {
     @Bean(initMethod = "start", destroyMethod = "stop")
     public HealthChecker healthChecker(@Autowired RegistryService registryService){
         return  new UBHealthChecker(registryService);
+    }
+
+    @Bean(initMethod = "init")
+    public Cluster cluster(@Autowired UBRegistryConfigProperties properties)
+    {
+        return new Cluster(properties);
     }
 }

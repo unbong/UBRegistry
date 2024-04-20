@@ -8,7 +8,7 @@ Content-Type: application/json
 {
   "context": "http",
   "host": "127.0.0.1",
-  "port": "8802",
+  "port": "8801",
   "schema": "http",
   "status": false,
 
@@ -20,7 +20,7 @@ POST localhost:8484/unreg?service=unbong
 Content-Type: application/json
 
 {
-  "context": "",
+  "context": "http",
   "host": "127.0.0.1",
   "port": "8801",
   "schema": "http",
@@ -28,4 +28,19 @@ Content-Type: application/json
 
   "parameters": {"env": "dev"}
 }
+
+
+### get cluster
+GET localhost:8484/cluster
+
+
+### get info
+GET localhost:8484/info
+
+
+### get leader
+GET localhost:8484/leader
+
+### set leader
+GET localhost:8485/sl
 

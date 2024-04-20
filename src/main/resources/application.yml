@@ -7,3 +7,9 @@ server:
 logging:
   level:
     io.unbong: debug
+
+ubregistry:
+  serverList:
+    - http://127.0.0.1:8484
+    - http://127.0.0.1:8485
+    - http://127.0.0.1:8486

@@ -1,7 +1,10 @@
 package io.unbong.ubregistry.model;
 
 import com.alibaba.fastjson.JSON;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -14,6 +17,9 @@ import java.util.Map;
  * 2024-04-13 20:30
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = {"scheme", "host", "port", "context"})
 public class InstanceMeta {
 
     public InstanceMeta(String scheme, String host, Integer port, String context ) {
