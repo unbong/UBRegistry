@@ -1,9 +1,11 @@
 package io.unbong.ubregistry;
 
 import io.unbong.ubregistry.cluster.Cluster;
+import io.unbong.ubregistry.cluster.SnapShot;
 import io.unbong.ubregistry.model.InstanceMeta;
-import io.unbong.ubregistry.model.Server;
+import io.unbong.ubregistry.cluster.Server;
 import io.unbong.ubregistry.service.RegistryService;
+import io.unbong.ubregistry.service.UBRegistryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,12 +35,21 @@ public class UBRegistryController {
 
     @RequestMapping("/reg")
     public InstanceMeta register(@RequestParam String service, @RequestBody InstanceMeta instance){
+        isLeader();
         log.debug(" ---->register {} @ {}", service, instance);
         return registryService.register(service, instance);
     }
 
+    private void isLeader() {
+        if(!cluster.self().isLeader())
+        {
+            throw new RuntimeException("current server is not a leader, the leader is "+ cluster.leader().getUrl());
+        }
+    }
+
     @RequestMapping("/unreg")
     public InstanceMeta unregister(@RequestParam String service, @RequestBody InstanceMeta instance){
+        isLeader();
         log.debug(" ---->unregister {} @ {}", service, instance);
         return registryService.unregister(service, instance);
     }
@@ -54,6 +65,7 @@ public class UBRegistryController {
     @RequestMapping("/renews")
     public long  renews(@RequestParam String service, @RequestBody InstanceMeta instance)
     {
+        isLeader();
         log.debug(" ---->renew {}, instnace", service, instance);
         return registryService.renew(instance,service.split(","));
     }
@@ -91,6 +103,11 @@ public class UBRegistryController {
         cluster.self().setLeader(true);
         log.debug("---> setLeader, {}", cluster.self());
         return cluster.self();
+    }
+
+    @RequestMapping("/snapshot")
+    public SnapShot snapShot(){
+        return UBRegistryService.snapShot();
     }
 
 

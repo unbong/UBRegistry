@@ -19,17 +19,17 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"scheme", "host", "port", "context"})
+@EqualsAndHashCode(of = {"schema", "host", "port", "context"})
 public class InstanceMeta {
 
-    public InstanceMeta(String scheme, String host, Integer port, String context ) {
-        this.scheme = scheme;
+    public InstanceMeta(String schema, String host, Integer port, String context ) {
+        this.schema = schema;
         this.host = host;
         this.port = port;
         this.context = context;
     }
 
-    private String scheme;  // protocol default http
+    private String schema;  // protocol default http
     private String host;
     private Integer port;
     private String context;
@@ -46,7 +46,7 @@ public class InstanceMeta {
     }
 
     public String toURL() {
-        return String.format("%s://%s:%d/%s",scheme, host, port,context);
+        return String.format("%s://%s:%d/%s", schema, host, port,context);
     }
 
     public String toMetas() {

@@ -8,7 +8,7 @@ Content-Type: application/json
 {
   "context": "http",
   "host": "127.0.0.1",
-  "port": "8801",
+  "port": "8803",
   "schema": "http",
   "status": false,
 
@@ -30,6 +30,7 @@ Content-Type: application/json
 }
 
 
+
 ### get cluster
 GET localhost:8484/cluster
 
@@ -43,4 +44,7 @@ GET localhost:8484/leader
 
 ### set leader
 GET localhost:8485/sl
+
+### get snap shot
+GET localhost:8485/snapshot
 

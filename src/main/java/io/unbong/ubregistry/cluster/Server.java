@@ -1,4 +1,4 @@
-package io.unbong.ubregistry.model;
+package io.unbong.ubregistry.cluster;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

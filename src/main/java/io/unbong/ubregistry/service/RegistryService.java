@@ -1,5 +1,6 @@
 package io.unbong.ubregistry.service;
 
+import io.unbong.ubregistry.cluster.SnapShot;
 import io.unbong.ubregistry.model.InstanceMeta;
 
 import java.util.Arrays;
@@ -27,4 +28,6 @@ public interface RegistryService {
     public long version(String service);
 
     public Map<String, Long> versions(String ... services);
+
+
 }
