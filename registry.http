@@ -1,5 +1,5 @@
 ### get all
-GET localhost:8484/findAll?service=unbong
+GET localhost:8484/findAll?service=app1_public_dev_io.unbong.ubrpc.demo.api.UserService
 
 ### 注册服务
 POST localhost:8484/reg?service=unbong

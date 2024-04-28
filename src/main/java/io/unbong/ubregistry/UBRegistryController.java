@@ -66,17 +66,22 @@ public class UBRegistryController {
     public long  renews(@RequestParam String service, @RequestBody InstanceMeta instance)
     {
         isLeader();
-        log.debug(" ---->renew {}, instnace", service, instance);
+        log.debug(" ---->renew {}, instnace {}", service, instance);
         return registryService.renew(instance,service.split(","));
     }
 
     @RequestMapping("/versions")
-    public Map<String, Long> version(@RequestParam String service, @RequestBody InstanceMeta instance)
+    public Map<String, Long> versions(@RequestParam String service)
     {
-        log.debug(" ---->version {}, instnace", service, instance);
+        log.debug(" ---->version {}", service);
         return registryService.versions(service.split(","));
     }
 
+    @RequestMapping("/version")
+    public long version(@RequestParam String service) {
+        log.info(" ===> version {}", service);
+        return registryService.version(service);
+    }
 
     // todo verison
 
