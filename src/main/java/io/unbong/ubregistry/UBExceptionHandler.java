@@ -1,5 +1,6 @@
 package io.unbong.ubregistry;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -13,11 +14,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * 2024-04-20 21:30
  */
 @RestControllerAdvice
+@Slf4j
 public class UBExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ExceptionResponse handleException(Exception e){
-        return new ExceptionResponse(HttpStatus.INTERNAL_SERVER_ERROR, "");
+        return new ExceptionResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
     }
 }
